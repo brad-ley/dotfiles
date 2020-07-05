@@ -39,6 +39,7 @@ map <leader>k 10k
 vmap <leader>k 10k
 map <buffer> <leader>' :ALEFix<CR>
 imap jj <Esc>
+imap ZZ <Esc>:wq<CR>
 
 set tabstop=4 shiftwidth=4 expandtab
 
@@ -62,7 +63,6 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'preservim/nerdtree'
 Plugin 'vim-scripts/HTML-AutoCloseTag'
 let g:jedi#completions_enabled = 0 
-let g:deoplete#enable_at_startup = 1
 let g:ale_fix_on_save = 0
 let g:airline_theme='lucius'
 let g:pyrope_mode = 0
