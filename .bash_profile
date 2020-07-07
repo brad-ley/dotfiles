@@ -15,11 +15,12 @@ alias py='cd /Users/Brad/Documents/Research/code/python'
 alias mat='cd /Users/Brad/Documents/Research/code/matlab'
 alias type='cd /Users/Brad/Documents/Research/code/typescript'
 # Switch to Sherwin Lab research directory
-alias res='cd /Users/Brad/Documents/Research/2020'
+alias res='cd /Users/Brad/Documents/Research/Code'
+alias data='cd /Users/Brad/Box\ Sync/Sherwin\ Lab/Data'
 # Make 'ls' look nicer
 alias sher='cd /Users/Brad/Box\ Sync/Sherwin\ Lab'
 # Jump to misc-useful
-alias misc='cd /Users/Brad/Documents/Research/2020/python/misc-useful'
+alias misc='cd /Users/Brad/Documents/Research/code/python/misc-useful'
 alias ls='ls -G'
 # Speed up parent directory
 alias ..='cd ..'
@@ -29,7 +30,7 @@ alias refresh='source ~/.zshrc'
 # Knot login shortcut
 alias knot='ssh bdprice@knot.cnsi.ucsb.edu'
 # Quick access to plotting software
-alias plot='python /Users/Brad/Documents/Research/2020/Python/misc-useful/plot_gui_v3.py'
+alias plot='python /Users/Brad/Documents/Research/Code/Python/misc-useful/plot_gui_v3.py'
 # Run MATLAB with no display in terminal
 alias matlab='/Applications/MATLAB_R2020a.app/bin/matlab -nodisplay -nodesktop -nosplash'
 # Check status on knot
@@ -53,6 +54,13 @@ function knotscp { scp "$1" 'bdprice@knot.cnsi.ucsb.edu:~/'"$2" ; }
 function locscp { scp 'bdprice@knot.cnsi.ucsb.edu:~/'"$(printf %q "$2")"'/'"$(printf %q "$1")" . ; }
 # Make directory and switch into it
 function mks { mkdir "$1" && cd "$1" ; }
+# pdf-crop-margins shortcut for all files in directory
+function pdfcrop {
+    for entry in `ls *.pdf`
+    do
+        pdf-crop-margins -o "/Volumes/GoogleDrive/My Drive/Research/Literature/cropped_${entry}" -u -s ${entry}
+    done
+} 
 # Run MATLAB function with only 'matlabrun function(args)'
 function matlabrun {
 	/Applications/MATLAB_R2020a.app/bin/matlab -nodisplay -nodesktop -nosplash -batch "try $1; catch me; fprintf('%s / %s\n',me.identifier,me.message), end, exit"
@@ -82,6 +90,8 @@ export PATH
 # The original version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
 export PATH
+# PATH="/Users/Brad/Library/Python/3.8/bin:${PATH}"
+# export PATH
 # added by Anaconda3 2019.03 installer
 # >>> conda init >>>
 # !! Contents within this block are managed by 'conda init' !!
