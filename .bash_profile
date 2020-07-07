@@ -58,7 +58,7 @@ function mks { mkdir "$1" && cd "$1" ; }
 function pdfcrop {
     for entry in `ls *.pdf`
     do
-        pdf-crop-margins -o "/Volumes/GoogleDrive/My Drive/Research/Literature/cropped_${entry}" -u -s ${entry}
+        pdf-crop-margins -o "/Volumes/GoogleDrive/My Drive/Research/Literature/cropped_${entry}" -u -s -p 25 ${entry}
     done
 } 
 # Run MATLAB function with only 'matlabrun function(args)'
