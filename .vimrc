@@ -1,5 +1,4 @@
 syntax on
-set background=dark
 set smartindent
 set nobackup
 set undodir=~/.vim/undodir
@@ -48,6 +47,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 " Plugin 'ycm-core/YouCompleteMe'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'easymotion/vim-easymotion'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'lervag/vimtex'
 Plugin 'mbbill/undotree'
@@ -62,10 +62,18 @@ Plugin 'ervandew/supertab'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'preservim/nerdtree'
 Plugin 'vim-scripts/HTML-AutoCloseTag'
+Plugin 'machakann/vim-highlightedyank'
+Plugin 'nathanaelkane/vim-indent-guides'
+let g:highlightedyank_highlight_duration = 500
 let g:jedi#completions_enabled = 0 
 let g:ale_fix_on_save = 0
-let g:airline_theme='lucius'
 let g:pyrope_mode = 0
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
+" let g:indent_guides_auto_colors = 0
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray  ctermbg=236
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgray ctermbg=237
+map s <plug>(easymotion-prefix)
 nmap <leader>gj :diffget //3<CR>
 nmap <leader>gf :diffget //2<CR>
 nmap <leader>gs :G<CR>
@@ -80,11 +88,20 @@ Plugin 'morhetz/gruvbox'
 set rtp+=~/.vim/bundle/gruvbox
 Plugin 'joshdick/onedark.vim'
 set rtp+=~/.vim/bundle/onedark.vim
+Plugin 'skbolton/embark'
+set rtp+=~/.vim/bundle/embark
+Plugin 'heraldofsolace/nisha-vim'
+set rtp+=~/.vim/bundle/nisha-vim
 
-colorscheme onedark
+" colorscheme oendark
+" let g:airline_theme='lucius'
+let g:airline_theme='nisha'
+colorscheme nisha
+set termguicolors
 
 call vundle#end()            " required
 filetype plugin indent on    " required
+set background=dark
 " To ignore plugin indent changes, instead use:
 " filetype plugin on
 "

@@ -15,7 +15,7 @@ alias py='cd /Users/Brad/Documents/Research/code/python'
 alias mat='cd /Users/Brad/Documents/Research/code/matlab'
 alias type='cd /Users/Brad/Documents/Research/code/typescript'
 # Switch to Sherwin Lab research directory
-alias res='cd /Users/Brad/Documents/Research/Code'
+alias res='cd /Volumes/GoogleDrive/My\ Drive/Research'
 alias data='cd /Users/Brad/Box\ Sync/Sherwin\ Lab/Data'
 # Make 'ls' look nicer
 alias sher='cd /Users/Brad/Box\ Sync/Sherwin\ Lab'
