@@ -19,6 +19,7 @@ noremap <leader>s <C-w><C-j>
 noremap <leader>d <C-w><C-k>
 noremap <leader>f <C-w><C-l>
 noremap <leader>o <C-w><C-o>
+noremap <leader>= <C-w><C-=>
 imap zz <esc>zza
 
 " Relative number
@@ -39,6 +40,12 @@ vmap <leader>k 10k
 map <buffer> <leader>' :ALEFix<CR>
 imap jj <Esc>
 imap ZZ <Esc>:wq<CR>
+
+nmap <c-f>f :FZF<CR>
+nmap <c-f>c :FZF /Users/Brad/Documents/Research/Code<CR>
+nmap <c-f>b :FZF /Users/Brad/Box\ Sync/Sherwin\ Lab<CR>
+nmap <c-f>g :FZF /Volumes/GoogleDrive/My\ Drive/Research<CR>
+nmap <c-f>h :FZF ~<CR>
 
 set tabstop=4 shiftwidth=4 expandtab
 
@@ -63,12 +70,20 @@ Plugin 'preservim/nerdtree'
 Plugin 'vim-scripts/HTML-AutoCloseTag'
 Plugin 'machakann/vim-highlightedyank'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'junegunn/fzf.vim'
+set rtp+=/usr/local/opt/fzf
 let g:highlightedyank_highlight_duration = 500
 let g:jedi#completions_enabled = 0 
 let g:ale_fix_on_save = 0
 let g:pyrope_mode = 0
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
+
+let g:AutoPairsShortcutToggle     = 'π' " <m-p>
+let g:AutoPairsShortcutFastWrap   = '<leader>w' " <m-w>
+let g:AutoPairsShortcutFastWrap   = 'ff'
+let g:AutoPairsShortcutJump       = '∆' " <m-j>
+let g:AutoPairsShortcutBackInsert = '∫' " <m-b>
 " let g:indent_guides_auto_colors = 0
 " autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray  ctermbg=236
 " autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgray ctermbg=237
@@ -76,6 +91,8 @@ map s <plug>(easymotion-prefix)
 nmap <leader>gj :diffget //3<CR>
 nmap <leader>gf :diffget //2<CR>
 nmap <leader>gs :G<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>gp :Gpush<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
