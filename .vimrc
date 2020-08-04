@@ -11,6 +11,8 @@ set colorcolumn=80
 :set nowrap
 filetype off                  " required
 set viewoptions=cursor,folds,slash,unix
+set foldmethod=indent
+nmap <space> za
 
 vnoremap . :normal .<CR>
 noremap <leader><space> :noh<CR>
@@ -45,6 +47,7 @@ nmap <c-f>f :FZF<CR>
 nmap <c-f>c :FZF /Users/Brad/Documents/Research/Code<CR>
 nmap <c-f>b :FZF /Users/Brad/Box\ Sync/Sherwin\ Lab<CR>
 nmap <c-f>g :FZF /Volumes/GoogleDrive/My\ Drive/Research<CR>
+nmap <c-f>p :FZF ..<CR>
 nmap <c-f>h :FZF ~<CR>
 
 set tabstop=4 shiftwidth=4 expandtab
@@ -71,7 +74,14 @@ Plugin 'vim-scripts/HTML-AutoCloseTag'
 Plugin 'machakann/vim-highlightedyank'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'junegunn/fzf.vim'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'Konfekt/FastFold'
+let g:SimpylFold_docstring_preview = 1
+let g:SimpylFold_fold_docstring = 0
+let g:SimpylFold_fold_import = 1
 set rtp+=/usr/local/opt/fzf
+let g:fzf_layout = {'window': {'width': 0.8, 'height': 0.8}}
+let $FZF_DEFAULT_OPTS='--reverse'
 let g:highlightedyank_highlight_duration = 500
 let g:jedi#completions_enabled = 0 
 let g:ale_fix_on_save = 0

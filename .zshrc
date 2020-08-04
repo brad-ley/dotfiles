@@ -134,7 +134,7 @@ alias refresh='source ~/.zshrc'
 # Knot login shortcut
 alias knot='ssh bdprice@knot.cnsi.ucsb.edu'
 # Quick access to plotting software
-alias plot='python /Users/Brad/Documents/Research/Code/Python/misc-useful/plot_gui_v3.py'
+alias plot='python /Users/Brad/Documents/Research/Code/Python/misc-useful/plotGUI.py'
 # Run MATLAB with no display in terminal
 alias matlab='/Applications/MATLAB_R2020a.app/bin/matlab -nodisplay -nodesktop -nosplash'
 # Check status on knot
