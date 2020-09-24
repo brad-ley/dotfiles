@@ -15,13 +15,14 @@ set foldmethod=indent
 nmap <space> za
 
 vnoremap . :normal .<CR>
-noremap <leader><space> :noh<CR>
-noremap <leader>a <C-w><C-h>
-noremap <leader>s <C-w><C-j>
-noremap <leader>d <C-w><C-k>
-noremap <leader>f <C-w><C-l>
-noremap <leader>o <C-w><C-o>
-noremap <leader>= <C-w><C-=>
+nmap <leader><space> :noh<CR>
+nmap 'h <C-w><C-h>
+nmap 'j <C-w><C-j>
+nmap 'k <C-w><C-k>
+nmap 'l <C-w><C-l>
+nmap 'o <C-w><C-o>
+nmap '= <C-w><C-=>
+nmap 'r <C-w><C-r>
 imap zz <esc>zza
 
 " Relative number
@@ -39,27 +40,48 @@ map <leader>j 10j
 vmap <leader>j 10j
 map <leader>k 10k
 vmap <leader>k 10k
-map <buffer> <leader>' :ALEFix<CR>
+map <leader>' :ALEFix<CR>
 imap jj <Esc>
 imap ZZ <Esc>:wq<CR>
 
 nmap <c-f>f :FZF<CR>
+nmap <c-f><c-f> :FZF<CR>
 nmap <c-f>c :FZF /Users/Brad/Documents/Research/Code<CR>
+nmap <c-f><c-c> :FZF /Users/Brad/Documents/Research/Code<CR>
 nmap <c-f>b :FZF /Users/Brad/Box\ Sync/Sherwin\ Lab<CR>
+nmap <c-f><c-b> :FZF /Users/Brad/Box\ Sync/Sherwin\ Lab<CR>
 nmap <c-f>g :FZF /Volumes/GoogleDrive/My\ Drive/Research<CR>
-nmap <c-f>p :FZF ..<CR>
+nmap <c-f><c-g> :FZF /Volumes/GoogleDrive/My\ Drive/Research<CR>
+nmap <c-f>c :FZF ..<CR>
+nmap <c-f><c-p> :FZF ..<CR>
+nmap <c-f> :FZF ~<CR>
 nmap <c-f>h :FZF ~<CR>
+nmap <c-f><c-h> :FZF ~<CR>
 
 set tabstop=4 shiftwidth=4 expandtab
+
+" FUNCTIONS #############
+
+" add an auto-source command
+fu! Cabbrev(key, value)
+  exe printf('cabbrev <expr> %s (getcmdtype() == ":" && getcmdpos() <= %d) ? %s : %s',
+    \ a:key, 1+len(a:key), string(a:value), string(a:key))
+endfu
+call Cabbrev('refresh', 'source ~/.vimrc')
+call Cabbrev('vimrc', 'tabe ~/.vimrc')
+call Cabbrev('epr', 'r ~/.vim/.processEPR.py')
+call Cabbrev('imports', 'r ~/.vim/.pyImports.py')
+call Cabbrev('misc', 'r ~/.vim/.misc.py')
+call Cabbrev('TODO', 'sp ~/.vim/.TODO.md')
+call Cabbrev('todo', 'cd %:p:h<CR>:sp .todo.md')
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " let Vundle manage Vundle, required
-" Plugin 'ycm-core/YouCompleteMe'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'lervag/vimtex'
+" Plugin 'lervag/vimtex'
 Plugin 'mbbill/undotree'
 Plugin 'dense-analysis/ale'
 Plugin 'tpope/vim-fugitive'
@@ -72,10 +94,22 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'preservim/nerdtree'
 Plugin 'vim-scripts/HTML-AutoCloseTag'
 Plugin 'machakann/vim-highlightedyank'
-Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Yggdroot/indentLine'
 Plugin 'junegunn/fzf.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'Konfekt/FastFold'
+Plugin 'heavenshell/vim-pydocstring', { 'do': 'make install' }
+Plugin 'aserebryakov/vim-todo-lists'
+""""""""""""""""""""""""""
+" Stored Plugins
+""""""""""""""""""""""""""
+" Plugin 'nathanaelkane/vim-indent-guides'
+" let g:indent_guides_enable_on_vim_startup = 1
+" let g:indent_guides_guide_size = 1
+""""""""""""""""""""""""""
+let g:pydocstring_doq_path = '/opt/anaconda3/bin/doq'
+nmap <silent> <C-s> <Plug>(pydocstring)
+let g:indentLine_char = '┊'
 let g:SimpylFold_docstring_preview = 1
 let g:SimpylFold_fold_docstring = 0
 let g:SimpylFold_fold_import = 1
@@ -83,15 +117,14 @@ set rtp+=/usr/local/opt/fzf
 let g:fzf_layout = {'window': {'width': 0.8, 'height': 0.8}}
 let $FZF_DEFAULT_OPTS='--reverse'
 let g:highlightedyank_highlight_duration = 500
+let g:airline#extensions#ale#enabled = 1
 let g:jedi#completions_enabled = 0 
 let g:ale_fix_on_save = 0
 let g:pyrope_mode = 0
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size = 1
 
 let g:AutoPairsShortcutToggle     = 'π' " <m-p>
-let g:AutoPairsShortcutFastWrap   = '<leader>w' " <m-w>
-let g:AutoPairsShortcutFastWrap   = 'ff'
+" need to figure this out
+let g:AutoPairsShortcutFastWrap   = 'df'
 let g:AutoPairsShortcutJump       = '∆' " <m-j>
 let g:AutoPairsShortcutBackInsert = '∫' " <m-b>
 " let g:indent_guides_auto_colors = 0
@@ -105,24 +138,16 @@ nmap <leader>gc :Gcommit<CR>
 nmap <leader>gp :Gpush<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+map <leader>f :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>v :NERDTreeFind<CR>
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 
-Plugin 'dracula/vim', { 'name': 'dracula' }
-set rtp+=~/.vim/bundle/dracula
-Plugin 'dylanaraps/wal'
-set rtp+=~/.vim/bundle/wal
-Plugin 'morhetz/gruvbox'
-set rtp+=~/.vim/bundle/gruvbox
-Plugin 'joshdick/onedark.vim'
-set rtp+=~/.vim/bundle/onedark.vim
-Plugin 'skbolton/embark'
-set rtp+=~/.vim/bundle/embark
 Plugin 'heraldofsolace/nisha-vim'
 set rtp+=~/.vim/bundle/nisha-vim
 
-" colorscheme oendark
-" let g:airline_theme='lucius'
-let g:airline_theme='nisha'
 colorscheme nisha
+let g:airline_theme='nisha'
 set termguicolors
 
 call vundle#end()            " required

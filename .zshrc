@@ -113,23 +113,39 @@ alias zrc='vim ~/.zshrc'
 # Vi instead of vim
 alias vim='nvim'
 alias v='nvim'
+# switch to django app directory
+alias web='cd /Users/Brad/Documents/Research/code/python/sites'
 # Switch to python code directory
 alias code='cd /Users/Brad/Documents/Research/code'
 alias py='cd /Users/Brad/Documents/Research/code/python'
 alias mat='cd /Users/Brad/Documents/Research/code/matlab'
-alias type='cd /Users/Brad/Documents/Research/code/typescript'
+alias ts='cd /Users/Brad/Documents/Research/code/typescript'
 # Switch to Sherwin Lab research directory
 alias res='cd /Volumes/GoogleDrive/My\ Drive/Research'
-alias data='cd /Users/Brad/Box\ Sync/Sherwin\ Lab/Data'
+alias data='cd /Volumes/GoogleDrive/My\ Drive/Research/Data/2020/09'
+# Quickly copy FEL scripts to current dir
+alias felp='cp /Users/Brad/Documents/Research/code/python/felepr/Do_Batch_Process_Phase_Correction_With_Gui.py ./;
+mkdir -p ./processed_data;
+cp /Users/Brad/Documents/Research/code/python/felepr/Do_PhaseCycling_And_FFT.py ./processed_data/'
 # Make 'ls' look nicer
+alias ls='ls -G'
+# Make pwd give real directory
+alias p='pwd -P'
+alias cdp='cd -P .'
+# Quick todo list
+alias todo='v ~/.vim/.todo.md'
+# Make 'tree' look nicer
+alias tree='tree -C --filelimit 10'
+# Jump to Sherwin Lab in Box
 alias sher='cd /Users/Brad/Box\ Sync/Sherwin\ Lab'
 # Jump to misc-useful
 alias misc='cd /Users/Brad/Documents/Research/code/python/misc-useful'
-alias ls='ls -G'
+# Jump to felepr
+alias fel='cd /Users/Brad/Documents/Research/code/python/felepr'
 # Speed up parent directory
 alias ..='cd ..'
 alias cd..='cd ..'
-# Quick refresh bash_profile
+# Quick refresh zshrc
 alias refresh='source ~/.zshrc'
 # Knot login shortcut
 alias knot='ssh bdprice@knot.cnsi.ucsb.edu'
@@ -157,7 +173,7 @@ function knotscp { scp "$1" 'bdprice@knot.cnsi.ucsb.edu:~/'"$2" ; }
 # Local scp from Knot
 function locscp { scp 'bdprice@knot.cnsi.ucsb.edu:~/'"$(printf %q "$2")"'/'"$(printf %q "$1")" . ; }
 # Make directory and switch into it
-function mks { mkdir "$1" && cd "$1" ; }
+# function mks { mkdir "$1" && cd "$1" ; } ## want to use 'take' instead
 # pdf-crop-margins shortcut for all files in directory
 function pdfcrop {
     for entry in `ls *.pdf`
@@ -185,33 +201,9 @@ function ts {
 #################
 #PROGRAM CHANGES#
 #################
-# Setting PATH for Python 3.7
 # The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
+PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 export PATH
-
-# Setting PATH for Python 3.7
-# The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
-export PATH
-# PATH="/Users/Brad/Library/Python/3.8/bin:${PATH}"
-# export PATH
-# added by Anaconda3 2019.03 installer
-# >>> conda init >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$(CONDA_REPORT_ERRORS=false '/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    \eval "$__conda_setup"
-else
-    if [ -f "/anaconda3/etc/profile.d/conda.sh" ]; then
-# . "/anaconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
-        CONDA_CHANGEPS1=false conda activate base
-    else
-        \export PATH="/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda init <<<
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -228,11 +220,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-
-# Setting PATH for Python 3.8
-# The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.8/bin:${PATH}"
-export PATH
 
 # Setting PATH for Python 3.8
 # The original version is saved in .bash_profile.pysave
