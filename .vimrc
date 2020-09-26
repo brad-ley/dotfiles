@@ -32,6 +32,8 @@ autocmd FileType python map <buffer> <F11> :w<CR>:exec '!python' shellescape(@%,
 autocmd FileType python imap <buffer> <F11> <esc>:w<CR>:exec '!python' shellescape(@%, 1)<CR>
 autocmd FileType python map <buffer> <leader>; :w<CR>:exec '!python' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <leader>; <esc>:w<CR>:exec '!python' shellescape(@%, 1)<CR>
+autocmd FileType tex map <buffer> <leader>; :w<CR>:VimtexCompile<CR>
+autocmd FileType tex imap <buffer> <leader>; <esc>:w<CR>:VimtexCompileCR>
 nmap H ^
 nmap L g_
 vmap H ^
@@ -81,7 +83,7 @@ call vundle#begin()
 Plugin 'davidhalter/jedi-vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'VundleVim/Vundle.vim'
-" Plugin 'lervag/vimtex'
+Plugin 'lervag/vimtex'
 Plugin 'mbbill/undotree'
 Plugin 'dense-analysis/ale'
 Plugin 'tpope/vim-fugitive'
@@ -121,6 +123,8 @@ let g:airline#extensions#ale#enabled = 1
 let g:jedi#completions_enabled = 0 
 let g:ale_fix_on_save = 0
 let g:pyrope_mode = 0
+
+let g:tex_flavor='pdflatex'
 
 let g:AutoPairsShortcutToggle     = 'π' " <m-p>
 " need to figure this out
