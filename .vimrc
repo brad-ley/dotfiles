@@ -28,8 +28,8 @@ imap zz <esc>zza
 " Relative number
 :set number relativenumber
 
-autocmd FileType python map <buffer> <F11> :w<CR>:exec '!python' shellescape(@%, 1)<CR>
-autocmd FileType python imap <buffer> <F11> <esc>:w<CR>:exec '!python' shellescape(@%, 1)<CR>
+autocmd FileType typescript map <buffer> <leader>; :w<CR>:exec '!ts-node' shellescape(@%, 1)<CR>
+autocmd FileType typescript imap <buffer> <leader>; <esc>:w<CR>:exec '!ts-node' shellescape(@%, 1)<CR>
 autocmd FileType python map <buffer> <leader>; :w<CR>:exec '!python' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <leader>; <esc>:w<CR>:exec '!python' shellescape(@%, 1)<CR>
 autocmd FileType tex map <buffer> <leader>; :w<CR>:VimtexCompile<CR>
@@ -102,6 +102,7 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'Konfekt/FastFold'
 Plugin 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plugin 'aserebryakov/vim-todo-lists'
+Plugin 'wellle/targets.vim'
 """"""""""""""""""""""""""
 " Stored Plugins
 """"""""""""""""""""""""""
@@ -116,6 +117,7 @@ let g:SimpylFold_docstring_preview = 1
 let g:SimpylFold_fold_docstring = 0
 let g:SimpylFold_fold_import = 1
 set rtp+=/usr/local/opt/fzf
+let CurlineLineNR = 1
 let g:fzf_layout = {'window': {'width': 0.8, 'height': 0.8}}
 let $FZF_DEFAULT_OPTS='--reverse'
 let g:highlightedyank_highlight_duration = 500
