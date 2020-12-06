@@ -80,17 +80,14 @@ call Cabbrev('todo', 'cd %:p:h<CR>:sp .todo.md')
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " let Vundle manage Vundle, required
-Plugin 'davidhalter/jedi-vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'lervag/vimtex'
 Plugin 'mbbill/undotree'
-Plugin 'dense-analysis/ale'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-commentary'
-Plugin 'Shougo/deoplete.nvim'
 Plugin 'ervandew/supertab'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'preservim/nerdtree'
@@ -103,6 +100,11 @@ Plugin 'Konfekt/FastFold'
 Plugin 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plugin 'aserebryakov/vim-todo-lists'
 Plugin 'wellle/targets.vim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'dense-analysis/ale'
+Plugin 'Shougo/deoplete.nvim'
+" Plugin 'neovim/nvim-lspconfig'
+" Plugin 'nvim-lua/completion-nvim'
 """"""""""""""""""""""""""
 " Stored Plugins
 """"""""""""""""""""""""""
@@ -124,18 +126,15 @@ let g:highlightedyank_highlight_duration = 500
 let g:airline#extensions#ale#enabled = 1
 let g:jedi#completions_enabled = 0 
 let g:ale_fix_on_save = 0
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = "✗"
+let g:ale_sign_warning = "⚠"
+let g:ale_virtualtext_cursor = 1
+nmap <silent> <C-k> <Plug>(ale_previous_wrap_error)
+nmap <silent> <C-j> <Plug>(ale_next_wrap_error)
 let g:pyrope_mode = 0
-
 let g:tex_flavor='pdflatex'
 
-let g:AutoPairsShortcutToggle     = 'π' " <m-p>
-" need to figure this out
-let g:AutoPairsShortcutFastWrap   = 'df'
-let g:AutoPairsShortcutJump       = '∆' " <m-j>
-let g:AutoPairsShortcutBackInsert = '∫' " <m-b>
-" let g:indent_guides_auto_colors = 0
-" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray  ctermbg=236
-" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgray ctermbg=237
 map s <plug>(easymotion-prefix)
 nmap <leader>gj :diffget //3<CR>
 nmap <leader>gf :diffget //2<CR>
@@ -154,18 +153,14 @@ set rtp+=~/.vim/bundle/nisha-vim
 
 colorscheme nisha
 let g:airline_theme='nisha'
-set termguicolors
+" Plugin 'morhetz/gruvbox'
+" set rtp+=~/.vim/bundle/gruvbox
 
 call vundle#end()            " required
 filetype plugin indent on    " required
+set termguicolors
 set background=dark
-" To ignore plugin indent changes, instead use:
-" filetype plugin on
-"
-" Brief help
-" :PluginList          - list configured plugins
-" :PluginInstall(!)    - install (update) plugins
-" :PluginSearch(!) foo - search (or refresh cache first) for foo
-" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
-"
-" see :h vundle for more details or wiki for FAQ
+highlight link ALEVirtualTextWarning LineNr
+highlight link ALEWarningSign LineNr
+highlight link ALEErrorSign Constant
+highlight link ALEVirtualTextError Constant

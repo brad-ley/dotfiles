@@ -112,7 +112,7 @@ alias vimrc='vim ~/.vimrc'
 alias zrc='vim ~/.zshrc'
 # Vi instead of vim
 alias vim='nvim'
-alias v='nvim'
+alias v='vim'
 # switch to django app directory
 alias web='cd /Users/Brad/Documents/Research/code/python/sites'
 # Switch to python code directory
@@ -121,8 +121,8 @@ alias py='cd /Users/Brad/Documents/Research/code/python'
 alias mat='cd /Users/Brad/Documents/Research/code/matlab'
 alias ts='cd /Users/Brad/Documents/Research/code/typescript'
 # Switch to Sherwin Lab research directory
-alias res='cd /Volumes/GoogleDrive/My\ Drive/Research'
-alias data='cd /Volumes/GoogleDrive/My\ Drive/Research/Data/2020/09'
+alias res='cd /Users/Brad/Library/Containers/com.eltima.cloudmounter.mas/Data/.CMVolumes/Brad\ Price/Research'
+alias data='cd /Users/Brad/Library/Containers/com.eltima.cloudmounter.mas/Data/.CMVolumes/Brad\ Price/Research/Data'
 # Quickly copy FEL scripts to current dir
 alias felp='cp /Users/Brad/Documents/Research/code/python/felepr/Do_Batch_Process_Phase_Correction_With_Gui.py ./;
 mkdir -p ./processed_data;
@@ -178,7 +178,7 @@ function locscp { scp 'bdprice@knot.cnsi.ucsb.edu:~/'"$(printf %q "$2")"'/'"$(pr
 function pdfcrop {
     for entry in `ls *.pdf`
     do
-        pdf-crop-margins -o "/Volumes/GoogleDrive/My Drive/Research/Literature/cropped_${entry}" -u -s -p 25 ${entry}
+        pdf-crop-margins -o "/Users/Brad/Library/Containers/com.eltima.cloudmounter.mas/Data/.CMVolumes/Brad\ Price/Research/Literature/cropped_${entry}" -u -s -p 25 ${entry}
     done
 } 
 # Run MATLAB function with only 'matlabrun function(args)'
