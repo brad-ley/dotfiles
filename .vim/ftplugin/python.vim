@@ -4,8 +4,11 @@ set shiftwidth=4
 set softtabstop=4
 
 syntax on
-let python_highlight_all = 1
-let g:ale_sign_column_always = 1
+let python_highlight_all=1
+let g:ale_sign_column_always=1
+
+set foldmethod=syntax
+set foldnestmax=2
 
 let b:ale_fixers = ['prettier', 'autopep8', 'isort', 'add_blank_lines_for_python_control_statements', 'yapf']
 " let b:ale_fixers = ['prettier', 'autopep8', 'add_blank_lines_for_python_control_statements', 'yapf']

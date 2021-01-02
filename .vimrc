@@ -11,7 +11,7 @@ set colorcolumn=80
 :set nowrap
 filetype off                  " required
 set viewoptions=cursor,folds,slash,unix
-set foldmethod=indent
+set foldmethod=syntax
 nmap <space> za
 
 vnoremap . :normal .<CR>
@@ -38,10 +38,10 @@ nmap H ^
 nmap L g_
 vmap H ^
 vmap L g_
-map <leader>j 10j
-vmap <leader>j 10j
-map <leader>k 10k
-vmap <leader>k 10k
+map fj 10j
+vmap fj 10j
+map fk 10k
+vmap fk 10k
 map <leader>' :ALEFix<CR>
 imap jj <Esc>
 imap ZZ <Esc>:wq<CR>
@@ -50,10 +50,6 @@ nmap <c-f>f :FZF<CR>
 nmap <c-f><c-f> :FZF<CR>
 nmap <c-f>c :FZF /Users/Brad/Documents/Research/Code<CR>
 nmap <c-f><c-c> :FZF /Users/Brad/Documents/Research/Code<CR>
-nmap <c-f>b :FZF /Users/Brad/Box\ Sync/Sherwin\ Lab<CR>
-nmap <c-f><c-b> :FZF /Users/Brad/Box\ Sync/Sherwin\ Lab<CR>
-nmap <c-f>g :FZF /Volumes/GoogleDrive/My\ Drive/Research<CR>
-nmap <c-f><c-g> :FZF /Volumes/GoogleDrive/My\ Drive/Research<CR>
 nmap <c-f>c :FZF ..<CR>
 nmap <c-f><c-p> :FZF ..<CR>
 nmap <c-f> :FZF ~<CR>
@@ -79,7 +75,7 @@ call Cabbrev('todo', 'cd %:p:h<CR>:sp .todo.md')
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" let Vundle manage Vundle, required
+""""""""""""""""""""""""""""""""""""
 Plugin 'easymotion/vim-easymotion'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'lervag/vimtex'
@@ -103,15 +99,10 @@ Plugin 'wellle/targets.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'dense-analysis/ale'
 Plugin 'Shougo/deoplete.nvim'
-" Plugin 'neovim/nvim-lspconfig'
-" Plugin 'nvim-lua/completion-nvim'
-""""""""""""""""""""""""""
-" Stored Plugins
-""""""""""""""""""""""""""
-" Plugin 'nathanaelkane/vim-indent-guides'
-" let g:indent_guides_enable_on_vim_startup = 1
-" let g:indent_guides_guide_size = 1
-""""""""""""""""""""""""""
+Plugin 'deoplete-plugins/deoplete-jedi'
+Plugin 'mhartington/nvim-typescript', {'for': ['typescript', 'tsx'], 'do': './install.sh' }
+Plugin 'leafgarland/typescript-vim'
+""""""""""""""""""""""""""""""""""""
 let g:pydocstring_doq_path = '/opt/anaconda3/bin/doq'
 nmap <silent> <C-s> <Plug>(pydocstring)
 let g:indentLine_char = '┊'
@@ -123,6 +114,7 @@ let CurlineLineNR = 1
 let g:fzf_layout = {'window': {'width': 0.8, 'height': 0.8}}
 let $FZF_DEFAULT_OPTS='--reverse'
 let g:highlightedyank_highlight_duration = 500
+let g:AutoPairsShortcutFastWrap = 'df'
 let g:airline#extensions#ale#enabled = 1
 let g:jedi#completions_enabled = 0 
 let g:ale_fix_on_save = 0
@@ -130,6 +122,8 @@ let g:ale_sign_column_always = 1
 let g:ale_sign_error = "✗"
 let g:ale_sign_warning = "⚠"
 let g:ale_virtualtext_cursor = 1
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:deoplete#enable_at_startiup = 1
 nmap <silent> <C-k> <Plug>(ale_previous_wrap_error)
 nmap <silent> <C-j> <Plug>(ale_next_wrap_error)
 let g:pyrope_mode = 0

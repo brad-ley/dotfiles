@@ -160,6 +160,7 @@ alias kr='knotrsync'
 alias lr='locrsync'
 alias lc='locscp'
 alias kc='knotscp'
+alias ad='cd ~/Documents/Research/code/typescript/advent'
 
 ###########
 #FUNCTIONS#
@@ -190,13 +191,19 @@ function matlabwin {
 	/Applications/MATLAB_R2020a.app/bin/matlab -batch "try $1; catch me; fprintf('%s / %s\n',me.identifier,me.message), end, exit"
 }
 # Run .ts file using Node.js from terminal
-function ts {
+function type {
     file=$1;
     if [[ $file == *.ts ]] 
     then 
         file=${file%.*} 
     fi 
     tsc "$file.ts" && node "$file.js"; 
+}
+function advent {
+    p="/Users/Brad/Documents/Research/code/typescript/advent/other/";
+    pfile="get_input.py";
+    # pout="advent.txt";
+    python $p$pfile $1;
 }
 #################
 #PROGRAM CHANGES#
