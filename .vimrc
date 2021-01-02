@@ -102,7 +102,7 @@ Plugin 'Shougo/deoplete.nvim'
 Plugin 'deoplete-plugins/deoplete-jedi'
 Plugin 'mhartington/nvim-typescript', {'for': ['typescript', 'tsx'], 'do': './install.sh' }
 Plugin 'leafgarland/typescript-vim'
-"""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""
 let g:pydocstring_doq_path = '/opt/anaconda3/bin/doq'
 nmap <silent> <C-s> <Plug>(pydocstring)
 let g:indentLine_char = '┊'
