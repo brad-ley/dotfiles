@@ -11,7 +11,7 @@ set colorcolumn=80
 :set nowrap
 filetype off                  " required
 set viewoptions=cursor,folds,slash,unix
-set foldmethod=syntax
+" set foldmethod=syntax
 nmap <space> za
 
 vnoremap . :normal .<CR>

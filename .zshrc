@@ -149,6 +149,11 @@ alias cd..='cd ..'
 alias refresh='source ~/.zshrc'
 # Knot login shortcut
 alias knot='ssh bdprice@knot.cnsi.ucsb.edu'
+# Pi login shortcut
+alias pi='ssh pi@169.231.182.39'
+# Pi run and stop LED flasher
+alias jk="pi 'python3 ~/Documents/code/python/control.py' &"
+alias kk="pi 'pkill -f control.py'"
 # Quick access to plotting software
 alias plot='python /Users/Brad/Documents/Research/Code/Python/misc-useful/plotGUI.py'
 # Run MATLAB with no display in terminal
@@ -171,8 +176,10 @@ function knotrsync { rsync -aqz ssh "$1" 'bdprice@knot.cnsi.ucsb.edu:~/'"$2" ; }
 function locrsync { rsync -aqz 'bdprice@knot.cnsi.ucsb.edu:~/'"$(printf %q "$1")" . ; }
 # Knot scp
 function knotscp { scp "$1" 'bdprice@knot.cnsi.ucsb.edu:~/'"$2" ; }
-# Local scp from Knot
-function locscp { scp 'bdprice@knot.cnsi.ucsb.edu:~/'"$(printf %q "$2")"'/'"$(printf %q "$1")" . ; }
+# Pi scp
+function piscp { scp "$1" 'pi@169.231.182.39:~/'"$2" ; }
+# Pi rsync
+function pirsync { rsync -aqz ssh "$1" 'pi@169.231.182.39:~/'"$2" ; }
 # Make directory and switch into it
 # function mks { mkdir "$1" && cd "$1" ; } ## want to use 'take' instead
 # pdf-crop-margins shortcut for all files in directory
