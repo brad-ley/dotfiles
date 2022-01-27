@@ -2,9 +2,7 @@
 
 !.gitignore
 !.vimrc
-!.bash_profile
 !/.vim
 /.vim/*
 !/.vim/*plugin
 !/.vim/*.py
-!/.zshrc
