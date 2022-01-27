@@ -3,6 +3,10 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/Brad/.oh-my-zsh"
+export DISCORD_BOT_TOKEN="ODI4MDI2MTkzNzcyNDEyOTI4.YGjlfA.rquJHDL3uK_-eAUIq4TCGjq_0A4"
+export CHL_DB_TOKEN="09980"
+export DATABASE_URL="postgres://xokakxnqpmacbj:7bf754ca316e628df9668a987ca7d052ef0efc6b7e251b650c23c873efc56f4e@ec2-3-211-37-117.compute-1.amazonaws.com:5432/d38hibbmfdlphg"
+export PYTHONPATH="/Users/Brad/Documents/Research/code/python/misc-useful":$PYTHONPATH
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -121,8 +125,9 @@ alias py='cd /Users/Brad/Documents/Research/code/python'
 alias mat='cd /Users/Brad/Documents/Research/code/matlab'
 alias ts='cd /Users/Brad/Documents/Research/code/typescript'
 # Switch to Sherwin Lab research directory
-alias res='cd /Users/Brad/Library/Containers/com.eltima.cloudmounter.mas/Data/.CMVolumes/Brad\ Price/Research'
-alias data='cd /Users/Brad/Library/Containers/com.eltima.cloudmounter.mas/Data/.CMVolumes/Brad\ Price/Research/Data'
+alias res="cd '/Volumes/GoogleDrive/My Drive/Research/'"
+alias data="cd '/Volumes/GoogleDrive/My Drive/Research/Data'"
+alias class="cd '/Volumes/GoogleDrive/My Drive/Courses/3rd year/MAT259/'"
 # Quickly copy FEL scripts to current dir
 alias felp='cp /Users/Brad/Documents/Research/code/python/felepr/Do_Batch_Process_Phase_Correction_With_Gui.py ./;
 mkdir -p ./processed_data;
@@ -139,7 +144,7 @@ alias tree='tree -C --filelimit 10'
 # Jump to Sherwin Lab in Box
 alias sher='cd /Users/Brad/Box\ Sync/Sherwin\ Lab'
 # Jump to misc-useful
-alias misc='cd /Users/Brad/Documents/Research/code/python/misc-useful'
+alias misc='cd /Users/Brad/Documents/Research/code/python/misc-useful && conda activate misc'
 # Jump to felepr
 alias fel='cd /Users/Brad/Documents/Research/code/python/felepr'
 # Speed up parent directory
@@ -150,14 +155,16 @@ alias refresh='source ~/.zshrc'
 # Knot login shortcut
 alias knot='ssh bdprice@knot.cnsi.ucsb.edu'
 # Pi login shortcut
-alias pi='ssh pi@169.231.182.39'
+alias pi='ssh pi@169.231.176.77'
+alias pil='ssh pi@raspberrypi.local'
 # Pi run and stop LED flasher
 alias jk="pi 'python3 ~/Documents/code/python/control.py' &"
 alias kk="pi 'pkill -f control.py'"
 # Quick access to plotting software
 alias plot='python /Users/Brad/Documents/Research/Code/Python/misc-useful/plotGUI.py'
 # Run MATLAB with no display in terminal
-alias matlab='/Applications/MATLAB_R2020a.app/bin/matlab -nodisplay -nodesktop -nosplash'
+alias matlab='/Applications/MATLAB_R2021b.app/bin/matlab -nodisplay -nodesktop -nosplash'
+# alias mrun=$(/Applications/MATLAB_R2021b.app/bin/matlab -nodisplay -nodesktop -nosplash -r 'try, run("$1"), catch me, fprintf('%s / %s\n',me.identifier,me.message), end, exit')
 # Check status on knot
 alias chk='knot "python3 ~/matlab/check_completion.py"'
 # Quickly transfer
@@ -166,10 +173,15 @@ alias lr='locrsync'
 alias lc='locscp'
 alias kc='knotscp'
 alias ad='cd ~/Documents/Research/code/typescript/advent'
+alias ink='/Applications/Inkscape.app/Contents/MacOS/inkscape'
+# Use ARM-okayed homebrew
+alias brew='/usr/local/opt/homebrew/bin/brew'
 
 ###########
 #FUNCTIONS#
 ###########
+# RPi remote edit
+function vpil { v scp://pi@raspberrypi.local/"$1" }
 # Knot rsync
 function knotrsync { rsync -aqz ssh "$1" 'bdprice@knot.cnsi.ucsb.edu:~/'"$2" ; }
 # Local rsync from knot
@@ -211,6 +223,7 @@ function advent {
     pfile="get_input.py";
     # pout="advent.txt";
     python $p$pfile $1;
+    ad;
 }
 #################
 #PROGRAM CHANGES#
