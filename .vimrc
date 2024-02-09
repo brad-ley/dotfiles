@@ -1,3 +1,4 @@
+" Neovim sourcing from /Users/Brad/.local/share/nvim/
 syntax on
 set smartindent
 set nobackup
@@ -53,15 +54,15 @@ map <leader>' :ALEFix<CR>
 imap jj <Esc>
 imap ZZ <Esc>:wq<CR>
 
-nmap <c-f>f :FZF<CR>
-nmap <c-f><c-f> :FZF<CR>
-nmap <c-f>c :FZF /Users/Brad/Documents/Research/Code<CR>
-nmap <c-f><c-c> :FZF /Users/Brad/Documents/Research/Code<CR>
-nmap <c-f>c :FZF ..<CR>
-nmap <c-f><c-p> :FZF ..<CR>
-nmap <c-f> :FZF ~<CR>
-nmap <c-f>h :FZF ~<CR>
-nmap <c-f><c-h> :FZF ~<CR>
+" nmap <c-f>f :FZF<CR>
+" nmap <c-f><c-f> :FZF<CR>
+" nmap <c-f>c :FZF /Users/Brad/Documents/Research/Code<CR>
+" nmap <c-f><c-c> :FZF /Users/Brad/Documents/Research/Code<CR>
+" nmap <c-f>c :FZF ..<CR>
+" nmap <c-f><c-p> :FZF ..<CR>
+" nmap <c-f> :FZF ~<CR>
+" nmap <c-f>h :FZF ~<CR>
+" nmap <c-f><c-h> :FZF ~<CR>
 
 set tabstop=4 shiftwidth=4 expandtab
 
@@ -80,64 +81,79 @@ call Cabbrev('imports', 'r ~/.vim/.pyImports.py')
 call Cabbrev('main', 'r ~/.vim/.pyMain.py')
 " call Cabbrev('bp', 'r ~/.vim/.pyImports.py<CR>ggddG:r ~/.vim/.pyMain.py _i<Enter><Esc>')
 call Cabbrev('bp', 'r ~/.vim/.pyImports.py<CR>ggddG:r ~/.vim/.pyMain.py <Esc>_i<Enter><Enter><Esc>')
+call Cabbrev('sci', 'r ~/.vim/.pySci.py<CR>')
 call Cabbrev('misc', 'r ~/.vim/.misc.py')
 call Cabbrev('TODO', 'sp ~/.vim/.TODO.md')
 call Cabbrev('todo', 'cd %:p:h<CR>:sp .todo.md')
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
+call plug#begin()
 """"""""""""""""""""""""""""""""""""
-Plugin 'easymotion/vim-easymotion'
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'lervag/vimtex'
-Plugin 'mbbill/undotree'
-Plugin 'tpope/vim-fugitive'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-commentary'
-Plugin 'ervandew/supertab'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'preservim/nerdtree'
-Plugin 'vim-scripts/HTML-AutoCloseTag'
-Plugin 'machakann/vim-highlightedyank'
-Plugin 'Yggdroot/indentLine'
-Plugin 'junegunn/fzf.vim'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'Konfekt/FastFold'
-Plugin 'heavenshell/vim-pydocstring', { 'do': 'make install' }
-Plugin 'aserebryakov/vim-todo-lists'
-Plugin 'wellle/targets.vim'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'dense-analysis/ale'
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'deoplete-plugins/deoplete-jedi'
-Plugin 'mhartington/nvim-typescript', {'for': ['typescript', 'tsx'], 'do': './install.sh' }
-Plugin 'leafgarland/typescript-vim'
-Plugin 'RRethy/vim-illuminate'
+Plug 'easymotion/vim-easymotion'
+" Plug 'VundleVim/Vundle.vim'
+Plug 'lervag/vimtex'
+Plug 'mbbill/undotree'
+Plug 'tpope/vim-fugitive'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-commentary'
+" Plug 'ervandew/supertab'
+Plug 'jiangmiao/auto-pairs'
+" Plug 'preservim/nerdtree'
+" Plug 'vim-scripts/HTML-AutoCloseTag'
+Plug 'machakann/vim-highlightedyank'
+Plug 'Yggdroot/indentLine'
+Plug 'junegunn/fzf.vim'
+" Plug 'tmhedberg/SimpylFold'
+Plug 'Konfekt/FastFold'
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
+Plug 'aserebryakov/vim-todo-lists'
+Plug 'wellle/targets.vim'
+" Plug 'davidhalter/jedi-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'dense-analysis/ale'
+"
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'nvim-treesitter/playground'
+"
+" Plug 'Shougo/deoplete.nvim'
+" Plug 'deoplete-plugins/deoplete-jedi'
+"
+" Plug 'mhartington/nvim-typescript', {'for': ['typescript', 'tsx'], 'do': './install.sh' }
+" Plug 'leafgarland/typescript-vim'
+"
+" Plug 'RRethy/vim-illuminate'
+Plug 'nvim-telescope/telescope.nvim'
+" Req dependencies for telescope (fuzzy finder)
+Plug 'nvim-lua/plenary.nvim'
+" Req dependencies for telescope (fuzzy finder)
+" Plug 'folke/flash.nvim'
 """"""""""""""""""""""""""""""""""""
-let g:pydocstring_doq_path = '/opt/anaconda3/bin/doq'
+" nnoremap <leader>ff <cmd>Telescope find_files<cr>
+" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+" nnoremap <leader>fb <cmd>Telescope buffers<cr>
+
+" let g:python_host_prog = '/opt/anaconda3/bin/python'
+" let g:python3_host_prog = '/opt/anaconda3/bin/python'
+" let g:pydocstring_doq_path = '/opt/anaconda3/bin/doq'
 nmap <silent> <C-s> <Plug>(pydocstring)
 let g:indentLine_char = '┊'
-let g:SimpylFold_docstring_preview = 1
-let g:SimpylFold_fold_docstring = 0
-let g:SimpylFold_fold_import = 1
+" let g:SimpylFold_docstring_preview = 1
+" let g:SimpylFold_fold_docstring = 0
+" let g:SimpylFold_fold_import = 1
 set rtp+=/usr/local/opt/fzf
 let CurlineLineNR = 1
 let g:fzf_layout = {'window': {'width': 0.8, 'height': 0.8}}
-let $FZF_DEFAULT_OPTS='--reverse'
+" let $FZF_DEFAULT_OPTS='--reverse'
 let g:highlightedyank_highlight_duration = 500
 let g:AutoPairsShortcutFastWrap = 'df'
-let g:airline#extensions#ale#enabled = 1
-let g:jedi#completions_enabled = 0 
-let g:ale_fix_on_save = 0
-let g:ale_sign_column_always = 1
-let g:ale_sign_error = "✗"
-let g:ale_sign_warning = "⚠"
-let g:ale_virtualtext_cursor = 1
+" let g:airline#extensions#ale#enabled = 1
 let g:SuperTabDefaultCompletionType = "<c-n>"
-let g:deoplete#enable_at_startiup = 1
-nmap <silent> <C-k> <Plug>(ale_previous_wrap_error)
-nmap <silent> <C-j> <Plug>(ale_next_wrap_error)
+" let g:deoplete#enable_at_startiup = 0
+nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
+nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
 let g:pyrope_mode = 0
 let g:tex_flavor='pdflatex'
 
@@ -148,27 +164,98 @@ nmap <leader>gs :G<CR>
 nmap <leader>gc :Gcommit<CR>
 nmap <leader>gp :Gpush<CR>
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-map <leader>f :NERDTreeToggle<CR>
-nnoremap <silent> <Leader>v :NERDTreeFind<CR>
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" map <leader>t :NERDTreeToggle<CR>
+" nnoremap <silent> <Leader>v :NERDTreeFind<CR>
+" let NERDTreeMinimalUI = 1
+" let NERDTreeDirArrows = 1
 
-Plugin 'heraldofsolace/nisha-vim'
-set rtp+=~/.vim/bundle/nisha-vim
-" Plugin 'pineapplegiant/spaceduck'
-" set rtp+=~/.vim/bundle/spaceduck
+Plug 'heraldofsolace/nisha-vim'
+" set rtp+=~/.vim/bundle/nisha-vim
+" let g:airline_theme='nisha'
+
+Plug 'projekt0n/github-nvim-theme'
+
+" Plug 'morhetz/gruvbox'
+" set rtp+=~/.vim/bundle/gruvbox
+
+" call vundle#end()            " required
+call plug#end()
+" colorscheme github_dark_colorblind
+
+augroup user_colors
+  autocmd!
+  autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+augroup END
 
 colorscheme nisha
 let g:airline_theme='nisha'
-" Plugin 'morhetz/gruvbox'
-" set rtp+=~/.vim/bundle/gruvbox
-
-call vundle#end()            " required
 filetype plugin indent on    " required
 set termguicolors
-set background=dark
-highlight link ALEVirtualTextWarning LineNr
-highlight link ALEWarningSign LineNr
-highlight link ALEErrorSign Constant
-highlight link ALEVirtualTextError Constant
+
+" set background=dark
+" highlight link ALEVirtualTextWarning LineNr
+" highlight link ALEWarningSign LineNr
+" highlight link ALEErrorSign Constant
+" highlight link ALEVirtualTextError Constant
+
+" let g:ale_virtualtext_cursor=0
+" let g:ale_set_highlights=0
+" let g:ale_fix_on_save=1
+" let g:ale_sign_column_always=1
+" let g:ale_sign_error="✗"
+" let g:ale_sign_warning="⚠"
+" let g:ale_virtualtext_cursor=1
+" let g:ale_change_sign_column_color=0
+" let g:ale_use_neovim_diagnostics_api=0
+let g:pymode_rope = 0
+" let g:jedi#popup_on_dot = 0
+" let g:jedi#show_call_signatures = "0"
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Highlight the symbol and its references when holding the cursor
+autocmd CursorHold * silent call CocActionAsync('highlight')
+set updatetime=500
+let g:lightline = {
+	\ 'colorscheme': 'one',
+	\ 'active': {
+	\   'left': [ [ 'mode', 'paste' ],
+	\             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+	\ },
+	\ 'component_function': {
+	\   'cocstatus': 'coc#status'
+	\ },
+	\ }
+
+  " Use autocmd to force lightline update.
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+
+nnoremap <c-f> <esc>:Lex<cr>:vertical resize 30<cr>
+inoremap <c-f> <esc>:Lex<cr>:vertical resize 30<cr>
+nnoremap <c-g> <cmd>Telescope live_grep<cr>
+inoremap <c-g> <esc><cmd>Telescope live_grep<cr>

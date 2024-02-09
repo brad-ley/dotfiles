@@ -6,12 +6,13 @@ set softtabstop=4
 syntax on
 let python_highlight_all=1
 let g:ale_sign_column_always=1
+" let g:ale_set_highlights=0
 
 set foldmethod=indent
 set foldnestmax=2
 
-let b:ale_fixers = ['prettier', 'autopep8', 'isort', 'add_blank_lines_for_python_control_statements', 'yapf']
-" let b:ale_fixers = ['prettier', 'autopep8', 'add_blank_lines_for_python_control_statements', 'yapf']
-" let b:ale_fixers = ['autopep8', 'isort']
-let b:ale_linters = ['pylint']
-" let b:ale_fixers = ['pylint', 'add_blank_lines_for_python_control_statements']
+" let g:ale_fixers = {'python':['prettier', 'autopep8', 'isort', 'add_blank_lines_for_python_control_statements', 'yapf']}
+" let g:ale_fixers = {'python':['autopep8', 'prettier']}
+" let g:ale_fixers = {'python':['black']}
+" let b:ale_linters = {'python':['pylint']}
+" let g:ale_linters = {'python':['ruff', 'pycodestyle']}
