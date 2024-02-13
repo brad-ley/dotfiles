@@ -1,5 +1,4 @@
 " Neovim sourcing from /Users/Brad/.local/share/nvim/
-syntax on
 set smartindent
 set nobackup
 set undodir=~/.vim/undodir
@@ -10,13 +9,10 @@ set number
 set colorcolumn=80
 let mapleader=","
 set nowrap
-" set foldenable
+set foldenable
 " set ignorecase
 filetype off                  " required
 set viewoptions=cursor,folds,slash,unix
-set foldclose=all
-" set foldmethod=syntax
-nmap <space> za
 
 vnoremap . :normal .<CR>
 nmap <leader><space> :noh<CR>
@@ -86,8 +82,6 @@ call Cabbrev('misc', 'r ~/.vim/.misc.py')
 call Cabbrev('TODO', 'sp ~/.vim/.TODO.md')
 call Cabbrev('todo', 'cd %:p:h<CR>:sp .todo.md')
 
-" set rtp+=~/.vim/bundle/Vundle.vim
-" call vundle#begin()
 call plug#begin()
 """"""""""""""""""""""""""""""""""""
 Plug 'easymotion/vim-easymotion'
@@ -106,8 +100,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-highlightedyank'
 Plug 'Yggdroot/indentLine'
 Plug 'junegunn/fzf.vim'
-" Plug 'tmhedberg/SimpylFold'
-Plug 'Konfekt/FastFold'
+
+" Plug 'Konfekt/FastFold'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'aserebryakov/vim-todo-lists'
 Plug 'wellle/targets.vim'
@@ -115,8 +109,7 @@ Plug 'wellle/targets.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'dense-analysis/ale'
 "
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Plug 'nvim-treesitter/playground'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "
 " Plug 'Shougo/deoplete.nvim'
 " Plug 'deoplete-plugins/deoplete-jedi'
@@ -140,9 +133,7 @@ Plug 'nvim-lua/plenary.nvim'
 " let g:pydocstring_doq_path = '/opt/anaconda3/bin/doq'
 nmap <silent> <C-s> <Plug>(pydocstring)
 let g:indentLine_char = '┊'
-" let g:SimpylFold_docstring_preview = 1
-" let g:SimpylFold_fold_docstring = 0
-" let g:SimpylFold_fold_import = 1
+
 set rtp+=/usr/local/opt/fzf
 let CurlineLineNR = 1
 let g:fzf_layout = {'window': {'width': 0.8, 'height': 0.8}}
@@ -176,12 +167,18 @@ Plug 'heraldofsolace/nisha-vim'
 
 Plug 'projekt0n/github-nvim-theme'
 
-" Plug 'morhetz/gruvbox'
-" set rtp+=~/.vim/bundle/gruvbox
+Plug 'morhetz/gruvbox'
+set rtp+=~/.vim/bundle/gruvbox
 
-" call vundle#end()            " required
 call plug#end()
 " colorscheme github_dark_colorblind
+
+" set foldmethod=syntax
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set foldclose=all
+nmap <space> za
+syntax on
 
 augroup user_colors
   autocmd!
@@ -189,7 +186,7 @@ augroup user_colors
 augroup END
 
 colorscheme nisha
-let g:airline_theme='nisha'
+" colorscheme gruvbox
 filetype plugin indent on    " required
 set termguicolors
 
