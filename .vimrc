@@ -50,16 +50,6 @@ map <leader>' :ALEFix<CR>
 imap jj <Esc>
 imap ZZ <Esc>:wq<CR>
 
-" nmap <c-f>f :FZF<CR>
-" nmap <c-f><c-f> :FZF<CR>
-" nmap <c-f>c :FZF /Users/Brad/Documents/Research/Code<CR>
-" nmap <c-f><c-c> :FZF /Users/Brad/Documents/Research/Code<CR>
-" nmap <c-f>c :FZF ..<CR>
-" nmap <c-f><c-p> :FZF ..<CR>
-" nmap <c-f> :FZF ~<CR>
-" nmap <c-f>h :FZF ~<CR>
-" nmap <c-f><c-h> :FZF ~<CR>
-
 set tabstop=4 shiftwidth=4 expandtab
 
 " FUNCTIONS #############
@@ -85,52 +75,29 @@ call Cabbrev('todo', 'cd %:p:h<CR>:sp .todo.md')
 call plug#begin()
 """"""""""""""""""""""""""""""""""""
 Plug 'easymotion/vim-easymotion'
-" Plug 'VundleVim/Vundle.vim'
 Plug 'lervag/vimtex'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-fugitive'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-commentary'
-" Plug 'ervandew/supertab'
 Plug 'jiangmiao/auto-pairs'
-" Plug 'preservim/nerdtree'
-" Plug 'vim-scripts/HTML-AutoCloseTag'
 Plug 'machakann/vim-highlightedyank'
 Plug 'Yggdroot/indentLine'
 Plug 'junegunn/fzf.vim'
-
-" Plug 'Konfekt/FastFold'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'aserebryakov/vim-todo-lists'
 Plug 'wellle/targets.vim'
-" Plug 'davidhalter/jedi-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'dense-analysis/ale'
-"
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-"
-" Plug 'Shougo/deoplete.nvim'
-" Plug 'deoplete-plugins/deoplete-jedi'
-"
 " Plug 'mhartington/nvim-typescript', {'for': ['typescript', 'tsx'], 'do': './install.sh' }
 " Plug 'leafgarland/typescript-vim'
-"
-" Plug 'RRethy/vim-illuminate'
 Plug 'nvim-telescope/telescope.nvim'
 " Req dependencies for telescope (fuzzy finder)
 Plug 'nvim-lua/plenary.nvim'
 " Req dependencies for telescope (fuzzy finder)
-" Plug 'folke/flash.nvim'
-""""""""""""""""""""""""""""""""""""
-" nnoremap <leader>ff <cmd>Telescope find_files<cr>
-" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-" nnoremap <leader>fb <cmd>Telescope buffers<cr>
+"
+" Plug 'folke/flash.nvim' "can't really get this plugin to work"
 
-" let g:python_host_prog = '/opt/anaconda3/bin/python'
-" let g:python3_host_prog = '/opt/anaconda3/bin/python'
-" let g:pydocstring_doq_path = '/opt/anaconda3/bin/doq'
 nmap <silent> <C-s> <Plug>(pydocstring)
 let g:indentLine_char = '┊'
 
@@ -140,9 +107,7 @@ let g:fzf_layout = {'window': {'width': 0.8, 'height': 0.8}}
 " let $FZF_DEFAULT_OPTS='--reverse'
 let g:highlightedyank_highlight_duration = 500
 let g:AutoPairsShortcutFastWrap = 'df'
-" let g:airline#extensions#ale#enabled = 1
 let g:SuperTabDefaultCompletionType = "<c-n>"
-" let g:deoplete#enable_at_startiup = 0
 nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
 nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
 let g:pyrope_mode = 0
@@ -155,25 +120,13 @@ nmap <leader>gs :G<CR>
 nmap <leader>gc :Gcommit<CR>
 nmap <leader>gp :Gpush<CR>
 autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" map <leader>t :NERDTreeToggle<CR>
-" nnoremap <silent> <Leader>v :NERDTreeFind<CR>
-" let NERDTreeMinimalUI = 1
-" let NERDTreeDirArrows = 1
 
 Plug 'heraldofsolace/nisha-vim'
-" set rtp+=~/.vim/bundle/nisha-vim
-" let g:airline_theme='nisha'
-
+Plug 'joshdick/onedark.vim'
 Plug 'projekt0n/github-nvim-theme'
 
-Plug 'morhetz/gruvbox'
-set rtp+=~/.vim/bundle/gruvbox
-
 call plug#end()
-" colorscheme github_dark_colorblind
 
-" set foldmethod=syntax
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set foldclose=all
@@ -185,30 +138,14 @@ augroup user_colors
   autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 augroup END
 
+" colorscheme onedark
 colorscheme nisha
+" colorscheme github_dark_dimmed
 " colorscheme gruvbox
 filetype plugin indent on    " required
 set termguicolors
 
-" set background=dark
-" highlight link ALEVirtualTextWarning LineNr
-" highlight link ALEWarningSign LineNr
-" highlight link ALEErrorSign Constant
-" highlight link ALEVirtualTextError Constant
-
-" let g:ale_virtualtext_cursor=0
-" let g:ale_set_highlights=0
-" let g:ale_fix_on_save=1
-" let g:ale_sign_column_always=1
-" let g:ale_sign_error="✗"
-" let g:ale_sign_warning="⚠"
-" let g:ale_virtualtext_cursor=1
-" let g:ale_change_sign_column_color=0
-" let g:ale_use_neovim_diagnostics_api=0
-let g:pymode_rope = 0
-" let g:jedi#popup_on_dot = 0
-" let g:jedi#show_call_signatures = "0"
-" Use K to show documentation in preview window
+" let g:pymode_rope = 0
 nnoremap <silent> K :call ShowDocumentation()<CR>
 
 function! ShowDocumentation()
