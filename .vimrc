@@ -9,8 +9,10 @@ set number
 set colorcolumn=80
 let mapleader=","
 set nowrap
-set foldenable
+" set foldenable
 " set ignorecase
+" syntax on
+"
 filetype off                  " required
 set viewoptions=cursor,folds,slash,unix
 
@@ -26,7 +28,7 @@ nmap 'r <C-w><C-r>
 imap zz <esc>zza
 
 " Relative number
-:set number relativenumber
+set number relativenumber
 
 autocmd FileType typescript map <buffer> <leader>; :w<CR>:exec '!ts-node' shellescape(@%, 1)<CR>
 autocmd FileType typescript imap <buffer> <leader>; <esc>:w<CR>:exec '!ts-node' shellescape(@%, 1)<CR>
@@ -89,13 +91,13 @@ Plug 'aserebryakov/vim-todo-lists'
 Plug 'wellle/targets.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Plug 'mhartington/nvim-typescript', {'for': ['typescript', 'tsx'], 'do': './install.sh' }
-" Plug 'leafgarland/typescript-vim'
 Plug 'nvim-telescope/telescope.nvim'
 " Req dependencies for telescope (fuzzy finder)
 Plug 'nvim-lua/plenary.nvim'
 " Req dependencies for telescope (fuzzy finder)
-"
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 " Plug 'folke/flash.nvim' "can't really get this plugin to work"
 
 nmap <silent> <C-s> <Plug>(pydocstring)
@@ -125,13 +127,15 @@ Plug 'heraldofsolace/nisha-vim'
 Plug 'joshdick/onedark.vim'
 Plug 'projekt0n/github-nvim-theme'
 
-call plug#end()
+Plug 'anuvyklack/pretty-fold.nvim'
 
+call plug#end()
+" set foldnestmax=4
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set foldclose=all
+
 nmap <space> za
-syntax on
 
 augroup user_colors
   autocmd!
@@ -189,7 +193,10 @@ let g:lightline = {
   " Use autocmd to force lightline update.
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
-nnoremap <c-f> <esc>:Lex<cr>:vertical resize 30<cr>
-inoremap <c-f> <esc>:Lex<cr>:vertical resize 30<cr>
+nnoremap <c-f> <esc>:Lex<cr>:vertical resize 25<cr>
+inoremap <c-f> <esc>:Lex<cr>:vertical resize 25<cr>
 nnoremap <c-g> <cmd>Telescope live_grep<cr>
 inoremap <c-g> <esc><cmd>Telescope live_grep<cr>
+
+autocmd VimEnter * if !argc() | Lex | vertical resize 50 | endif 
+let g:python3_host_prog='/Users/Brad/miniforge3/bin/python'
