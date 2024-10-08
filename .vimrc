@@ -73,6 +73,7 @@ call Cabbrev('sci', 'r ~/.vim/.pySci.py<CR>')
 call Cabbrev('misc', 'r ~/.vim/.misc.py')
 call Cabbrev('TODO', 'sp ~/.vim/.TODO.md')
 call Cabbrev('todo', 'cd %:p:h<CR>:sp .todo.md')
+call Cabbrev('hint', 'CocCommand document.toggleInlayHint')
 
 call plug#begin()
 """"""""""""""""""""""""""""""""""""
