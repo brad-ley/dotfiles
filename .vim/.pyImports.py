@@ -1,26 +1,23 @@
-import ast
-import os
-from pathlib import Path as P
-from pathlib import PurePath as PP
-from dataclasses import dataclass
-from readDataFile import read
 
-import PIL
 import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
 
 from matplotlib import rc
 
 if __name__ == "__main__":
-    plt.style.use(['science'])
-    rc('text.latex', preamble=r'\usepackage{cmbright}')
+    plt.style.use(["science"])
+    rc("text.latex", preamble=r"\usepackage{cmbright}")
     rcParams = [
-                ['font.family', 'sans-serif'], ['font.size', 14],
-                ['axes.linewidth', 1], ['lines.linewidth', 2],
-                ['xtick.major.size', 5], ['xtick.major.width', 1],
-                ['xtick.minor.size', 2], ['xtick.minor.width', 1],
-                ['ytick.major.size', 5], ['ytick.major.width', 1],
-                ['ytick.minor.size', 2], ['ytick.minor.width', 1],
-                ]
+        ["font.family", "sans-serif"],
+        ["font.size", 14],
+        ["axes.linewidth", 1],
+        ["lines.linewidth", 2],
+        ["xtick.major.size", 5],
+        ["xtick.major.width", 1],
+        ["xtick.minor.size", 2],
+        ["xtick.minor.width", 1],
+        ["ytick.major.size", 5],
+        ["ytick.major.width", 1],
+        ["ytick.minor.size", 2],
+        ["ytick.minor.width", 1],
+    ]
     plt.rcParams.update(dict(rcParams))
