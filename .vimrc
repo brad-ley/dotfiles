@@ -6,7 +6,7 @@ set undofile
 set incsearch
 set nocompatible              " be iMproved, required
 set number
-set colorcolumn=80
+set colorcolumn=100
 let mapleader=","
 set nowrap
 " set foldenable
@@ -87,6 +87,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-highlightedyank'
 Plug 'Yggdroot/indentLine'
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'aserebryakov/vim-todo-lists'
 Plug 'wellle/targets.vim'
@@ -129,9 +130,18 @@ Plug 'joshdick/onedark.vim'
 Plug 'projekt0n/github-nvim-theme'
 
 Plug 'anuvyklack/pretty-fold.nvim'
+" Plug 'prabirshrestha/vim-lsp'
 
 call plug#end()
 " set foldnestmax=4
+" if executable('ruff')
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'ruff',
+"         \ 'cmd': {server_info->['ruff', 'server']},
+"         \ 'allowlist': ['python'],
+"         \ 'workspace_config': {},
+"         \ })
+" endif
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set foldclose=all
