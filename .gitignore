@@ -2,6 +2,7 @@
 !/artifacts
 !/dist
 !/build
+!/.antigravity
 
 !.gitignore
 !.vimrc
